@@ -1,22 +1,8 @@
+from django.db import connection
 
-import sqlite3
 w = []
-with sqlite3.connect('Chinese_words3.db') as connection:
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM Words')
-    for cnt, (id_, character, pinyin, translation, picture) in enumerate(cursor.fetchall(), start=1):
-        w.append([cnt, character, pinyin, translation, picture])
-connection.close()
+with connection.cursor() as cursor:
+    cursor.execute('SELECT ID, Character, Pinyin, Translation FROM Words')
+    for cnt, (id_, character, pinyin, translation) in enumerate(cursor.fetchall(), start=1):
+        w.append([cnt, character, pinyin, translation])
 print (w)
-
-
-
-
-with sqlite3.connect('Chinese_words3.db') as connection:
-    cursor = connection.cursor()
-    cursor.execute('''DELETE FROM Words WHERE ID IN (
-    SELECT ID FROM Words
-    ORDER BY ID DESC
-    LIMIT 2)''')
-connection.commit()
-connection.close()
