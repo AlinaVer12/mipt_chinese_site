@@ -1,0 +1,58 @@
+{% extends "base_page.html" %}
+{% csrf_token %}
+{% block page-title %}
+Добавление нового слова
+{% endblock %}
+
+{% block page-lead %}
+Заполните форму, чтобы добавить в словарь новое слово для изучения.
+Обратите внимание, что поля <span class="fw-bold">Имя</span>, <span class="fw-bold">Email</span>, <span class="fw-bold">Слово иероглифами</span> и
+<span class="fw-bold">Перевод</span> обязательны для заполнения. Для работы тренажера необходимо, чтобы в словаре было <span class="fw-bold">минимум 3</span> разных слова.
+{% endblock %}
+
+
+{% block content %}
+<div class="container-sm px-5 py-5" id="word-form">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row px-5 py-2">
+            <h3>Ваши контактные данные</h3>
+        </div>
+        <div class="row px-5 py-2">
+            <div class="col-md-6">
+                <label for="name">Ваше имя:</label>
+                <input type="text" class="form-control input-lg" name="name" id="name" placeholder="Иван" value required>
+            </div>
+            <div class="col-md-6">
+                <label for="email">Ваш email:</label>
+                <input type="text" class="form-control input-lg" name="email" id="email" placeholder="ivan@ivanov.com" value required>
+            </div>
+            <div class="col-md-6">
+                <label for="email">Ваш телефон (необязательно):</label>
+                <input type="text" class="form-control input-lg" name="phone" id="phone" placeholder="+7(999)999-99-99">
+            </div>
+        </div>
+        <div class="row px-5 py-2">
+            <h3>Ваше слово</h3>
+        </div>
+        <div class="row px-5 py-2">
+            <div class="col-md-4">
+                <label for="new_word">Слово иероглифами</label>
+                <input type="text" class="form-control input-lg" name="new_word" id="new_word">
+            </div>
+            <div class="col-md-4">
+                <label for="new_pinyin">Пиньинь (необязательно) </label>
+                <input type="text" class="form-control input-lg" name="new_pinyin" id="new_pinyin">
+            </div>
+            <div class="col-md-8">
+                <label for="new_translation">Перевод на русский язык</label>
+                <textarea type="text" class="form-control input-lg" name="new_translation" id="new_translation" aria-describedby="definition_note" rows="1"></textarea>
+            </div>
+            </div>
+        <div class="row px-5 py-2">
+
+            <button type="submit" class="btn red-btn" formaction="/send-word" style="width: auto; padding: 10px 400px; margin: 0 auto">Добавить новое слово в словарь</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

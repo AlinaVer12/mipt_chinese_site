@@ -1,0 +1,53 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Тренажер
+{% endblock %}
+
+{% block page-lead %}
+Ниже дан иероглиф и несколько вариантов его перевода. Выберите правильный ответ и введите соответствующий номер в форму.
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container px-5 py-5" id="trainer">
+    <div class="col-md-3">
+         <h2 class="py-1 border-bottom">Иероглиф</h2>
+    <p class="col-md-20" style="font-size: 40px;">{{ train_words.3 }}</p>
+        </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col" class="py-3">Перевод 1</th>
+                    <th scope="col" class="py-3">Перевод 2</th>
+                    <th scope="col" class="py-3">Перевод 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="py-3">{{ train_words.0 }}</td>
+                    <td class="py-3">{{ train_words.1 }}</td>
+                    <td class="py-3">{{ train_words.2 }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="col-md-3">
+            <h2 class="py-1 border-bottom">Ваш ответ</h2>
+            <input type="text" class="form-control input-lg" name="user_index" id="user_index" placeholder="Введите только число от 1 до 3" required>
+            <input type="hidden" name="true_index" id="true_index" value="{{ train_words.4 }}">
+            <input type="hidden" name="train_character" id="train_character" value="{{ train_words.3 }}">
+            <input type="hidden" name="train_translation" id="train_translation" value="{{ train_words.5 }}">
+        </div>
+        <br>
+        <div class="row px-5 py-2" >
+            <button type="submit" class="btn red-btn" formaction="/check-word" style="width: auto; padding: 10px 400px; margin: 0 auto">Проверить ответ</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

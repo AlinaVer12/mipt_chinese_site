@@ -1,0 +1,37 @@
+{% extends "base_page.html" %}
+{% load static %}
+
+{% block page-title %}
+Словарь  <img src="{% static 'smiling_dragon.png' %}" alt="Грустный дракончик" width="180" height="180"/>
+{% endblock %}
+
+{% block page-lead %}
+В  данной таблице представлены китайские слова для изучения.
+{% endblock %}
+
+{% block content %}
+<div class="container px-4 py-5" id="vocabulary">
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3">#</th>
+              <th scope="col" class="py-3">Слово (иероглифами)</th>
+              <th scope="col" class="py-3">Пиньинь</th>
+              <th scope="col" class="py-3">Перевод</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cnt, character, pinyin, translation in words %}
+            <tr>
+                <td class="py-3">{{ cnt }}</td>
+                <td class="py-3">{{ character }}</td>
+                <td class="py-3">{{ pinyin }}</td>
+                <td class="py-3">{{ translation }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+{% endblock %}

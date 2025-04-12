@@ -1,0 +1,54 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Статистика по тренажеру
+{% endblock %}
+
+{% block page-lead %}
+Здесь представлена статистика по словам, добавленным в словарь, а также по повторениям и пользователям.
+{% endblock %}
+
+{% block content %}
+<div class="container px-4 py-5" id="stats">
+    <div>
+        <h3 class="py-2">Количество слов в словаре</h3>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-4">
+            <h4>{{ words_all }}</h4>
+            <p class="text-muted">всего</p>
+        </div>
+        <div class="col-md-4">
+            <h4>{{ words_db }}</h4>
+            <p class="text-muted">изначально бывших в базе данных</p>
+        </div>
+        <div class="col-md-4">
+            <h4>{{ words_added }}</h4>
+            <p class="text-muted">добавленных через <a href="/add-word">форму добавления</a></p>
+        </div>
+    </div>
+    <div>
+        <h3 class="py-2">Статистика повторений через тренажер</h3>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-4">
+            <h4>{{ sucs_tr }}</h4>
+            <p class="text-muted"> успешных повторений</p>
+        </div>
+        <div class="col-sm-4">
+            <h4>{{ unsucs_tr }}</h4>
+            <p class="text-muted">неуспешных повторений</p>
+        </div>
+    </div>
+    <div>
+        <h3 class="py-2">Пользователи</h3>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-4">
+            <h4>{{ users_all }}</h4>
+            <p class="text-muted"> разных пользователей добавляли слова в форму</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

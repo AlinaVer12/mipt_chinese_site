@@ -1,0 +1,118 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Изучение китайских слов
+{% endblock %}
+
+{% block page-lead %}
+Это страничка тренажера для изучения китайских слов и иероглифов. <br/>
+Добавьте новые слова и начните изучать китайский уже сейчас!
+{% endblock %}
+
+{% block content %}
+
+<div class="container px-4 py-5" id="project-contents">
+    <h2 class="pb-2 border-bottom">Что есть в этом тренажере</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="col d-flex bg-light-red">
+            <div class="icon-square bg-brown d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#cpu-fill"></use>
+                </svg>
+            </div>
+            <div>
+                <h3 class="fs-2">Словарь</h3>
+                <p>Таблица со словами, написанными с помощью китайских иероглифов и пиньинь, а также их переводом на русский язык.</p>
+                <a href="/vocabulary" class="btn red-btn">Посмотреть</a>
+            </div>
+        </div>
+
+        <div class="col d-flex bg-light-red">
+            <div class="icon-square bg-brown d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#cpu-fill"></use>
+                </svg>
+            </div>
+            <div>
+                <h3 class="fs-2">Форма для нового слова</h3>
+                <p>Добавьте новое слово для изучения!</p>
+                <a href="/add-word" class="btn red-btn">Заполнить</a>
+            </div>
+        </div>
+
+        <div class="col d-flex bg-light-red">
+            <div class="icon-square bg-brown d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#cpu-fill"></use>
+                </svg>
+            </div>
+            <div>
+                <h3 class="fs-2">Тренажер</h3>
+                {% if word_count > 2 %}
+                    <p>Повторите слова, добавленные в словарь, в формате игры на сопоставление иероглифа и его перевода.</p>
+                    <a href="/trainer" class="btn red-btn">Учить</a>
+                {% else %}
+                    <p>В словаре недостаточно слов для работы тренажера. Добавьте новые слова через форму.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col d-flex bg-light-red">
+            <div class="icon-square bg-brown d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="7em">
+                    <use xlink:href="#cpu-fill"></use>
+                </svg>
+            </div>
+             <div>
+                <h3 class="fs-2">Статистика</h3>
+                <p>Сколько слов в словаре? Сколько было повторений через тренажер?</p>
+                <a href="/stats" class="btn red-btn">Изучить</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <h2 class="pb-2 border-bottom">Зачем изучать китайский язык?</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col-lg-4">
+            <h4 class="py-1">Культурное обогащение</h4>
+        </div>
+        <div class="col-lg-8">
+            <p>Китайская культура имеет многовековую историю и богатое наследие, включая философию, искусство, литературу и традиции.
+                Изучая язык, вы получаете возможность глубже понять китайскую культуру и ее ценности. Это может обогатить ваш личный опыт и расширить кругозор.
+                Кроме того, понимание языка позволяет вам наслаждаться классической литературой, кино и музыкой в оригинале.</p>
+        </div>
+    </div>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col-lg-4">
+            <h4 class="py-1">Возможности для общения</h4>
+        </div>
+        <div class="col-lg-8">
+            <p>Китайский язык является одним из самых распространенных языков в мире с более чем миллиардом носителей. Знание языка позволяет вам общаться с людьми из разных стран и культур, устанавливать новые дружеские связи и деловые контакты.
+                Вы сможете участвовать в международных мероприятиях, конференциях и обменах опытом с носителями языка. Это расширяет ваши горизонты и создает новые возможности для взаимодействия.</p>
+        </div>
+    </div>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col-lg-4">
+            <h4 class="py-1">Развитие когнитивных навыков</h4>
+        </div>
+        <div class="col-lg-8">
+            <p>Изучение китайского языка способствует развитию когнитивных навыков, таких как память, внимание и аналитическое мышление.
+                Изучение тонов и сложной письменности требует высокой концентрации и усидчивости, что помогает улучшить общие навыки обучения.
+                Исследования показывают, что изучение иностранных языков может замедлить старение мозга и снизить риск развития деменции.
+            </p>
+        </div>
+    </div>
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col-lg-4">
+            <h4 class="py-1">Карьерные возможности</h4>
+        </div>
+        <div class="col-lg-8">
+            <p>Изучение китайского языка открывает двери к множеству карьерных возможностей. Китай является одной из крупнейших экономик мира, и знание языка может значительно повысить вашу конкурентоспособность на рынке труда.
+                Многие международные компании ищут сотрудников, владеющих китайским, чтобы расширить свои бизнес-операции в Китае.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

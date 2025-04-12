@@ -1,0 +1,48 @@
+{% extends "base_page.html" %}
+{% load static %}
+
+{% block page-title %}
+{% if success %}
+    Все верно! <img src="{% static 'happy_dragon.png' %}" alt="Грустный дракончик" width="180" height="180"/>
+{% else %}
+    Неверно!  <img src="{% static 'sad_dragon.png' %}" alt="Грустный дракончик" width="180" height="180"/>
+{% endif %}
+{% endblock %}
+
+{% block page-lead %}
+{% endblock %}
+
+{% block content %}
+<div class="container-sm px-5 py-5" id="word-form-result">
+    <h2 class="pb-2 border-bottom">Результат повторения</h2>
+    <p>Уважаемый пользователь,<br/>
+        Ваш ответ <span class="fw-bold">{% if success %}верен{% else %}неверен{% endif %}</span>!
+    </p>
+    <h2 class="pb-2 border-bottom">Ответ</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm" style="width: 400px;">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3">Иероглиф</th>
+              <th scope="col" class="py-3">Перевод</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td class="py-3">{{ train_character }}</td>
+                <td class="py-3">{{ train_translation }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <h2 class="pb-2 border-bottom">Комментарий</h2>
+    <p>{{ comment }}</p>
+
+    <h2 class="pb-2 border-bottom">Что можно сделать?</h2>
+    <ul>
+        <li>Продолжить повторять слова в <a href="/trainer">тренажере</a>,</li>
+        <li>Изучить слова в <a href="/vocabulary">словаре</a>,</li>
+        <li>Вернуться на <a href="/">главную</a></li>
+    </ul>
+</div>
+{% endblock %}
